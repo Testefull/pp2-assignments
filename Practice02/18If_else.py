@@ -232,6 +232,105 @@ else:
     print("Better stay inside")
 
 
+#NESTED IF STATEMENT EXAMPLES
+
+#1
+year = 2000
+
+if year % 4 == 0:
+    if year % 100 == 0:
+        if year % 400 == 0:
+            print(f"{year} is a leap year.")
+        else:
+            print(f"{year} is not a leap year.")
+    else:
+        print(f"{year} is a leap year.")
+else:
+    print(f"{year} is not a leap year.")
+
+
+#2
+pin = 1234
+balance = 5000
+withdraw_amount = 1000
+
+if pin == 1234:
+    if withdraw_amount <= balance:
+        balance -= withdraw_amount
+        print(f"Withdrawal successful. Remaining balance: {balance}")
+    else:
+        print("Insufficient funds.")
+else:
+    print("Incorrect PIN.")
+
+#3
+age = 20
+has_passport = True
+
+if age >= 18:
+    if has_passport:
+        print("You are eligible to travel abroad.")
+    else:
+        print("You need a passport to travel.")
+else:
+    print("You are too young to travel alone.")
+
+
+#EXAMPLES WITH PASS STATEMENTS
+
+#1
+feature_enabled = False
+
+if feature_enabled:
+    print("Feature is running!")
+else:
+    pass 
+
+#2
+feature_enabled = False
+
+if feature_enabled:
+    print("Feature is running!")
+else:
+    pass 
+
+#3
+x = 5
+y = 0
+
+if x > 0:
+    if y > 0:
+        print("Both positive")
+    else:
+        pass  
+else:
+    pass 
+
+#4
+user_input = ""
+
+if user_input:
+    print("Input received")
+else:
+    pass
+
+
+#5
+temperature = 25
+
+if temperature > 30:
+    print("It's hot!")
+elif temperature < 10:
+    print("It's cold!")
+else:
+    pass  
+
+
+
+
+
+
+
 
 
 
