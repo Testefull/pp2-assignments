@@ -90,7 +90,7 @@ x = 137
 if x % 2 == 1:
     print("ODD")
 else:
-    printt("EVEN")
+    print("EVEN")
 
 #4 Applying is the len
 print(len("Hello World!") < len("Pyhthon is the best programming language"))
