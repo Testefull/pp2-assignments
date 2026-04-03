@@ -1,6 +1,6 @@
 CREATE OR REPLACE PROCEDURE insert_or_update(p_name TEXT, p_phone TEXT) AS $$
 BEGIN
-    INSERT INTO phonebook (first_name, phone)
+    INSERT INTO phonebook (name, phone)
     VALUES (p_name, p_phone)
     ON CONFLICT (phone) DO UPDATE 
     SET name = EXCLUDED.name;
@@ -10,7 +10,7 @@ $$ LANGUAGE plpgsql;
 CREATE OR REPLACE PROCEDURE delete_contact(p_identifier TEXT) AS $$
 BEGIN
     DELETE FROM phonebook 
-    WHERE first_name = p_identifier OR phone = p_identifier;
+    WHERE name = p_identifier OR phone = p_identifier;
 END;
 $$ LANGUAGE plpgsql;
 
@@ -21,7 +21,7 @@ DECLARE
 BEGIN
 
     CREATE TEMP TABLE IF NOT EXISTS bulk_errors (
-        first_name TEXT,
+        name TEXT,
         phone TEXT
     ) ON COMMIT DROP;
 
