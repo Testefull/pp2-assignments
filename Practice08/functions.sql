@@ -3,7 +3,7 @@ RETURNS SETOF phonebook AS $$
 BEGIN
     RETURN QUERY
     SELECT * FROM phonebook
-    WHERE name ILIKE '%' || pattern || '%'
+    WHERE first_name ILIKE '%' || pattern || '%'
     OR phone ILIKE '%' || pattern || '%';
 END;
 $$ LANGUAGE plpgsql;
