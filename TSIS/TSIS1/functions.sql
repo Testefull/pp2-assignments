@@ -1,0 +1,29 @@
+
+CREATE OR REPLACE FUNCTION pagination(limit_value int, offset_value int)
+RETURNS TABLE (
+    id INT,
+    name VARCHAR,
+    email VARCHAR,
+    birthday DATE,
+    group_name VARCHAR,
+    phones TEXT
+)
+AS $$
+BEGIN
+    RETURN QUERY
+    SELECT 
+        c.id,
+        c.name,
+        c.email,
+        c.birthday,
+        g.name,
+        STRING_AGG(p.phone || ' (' || p.type || ')', ', ' ORDER BY p.id)
+    FROM contacts c
+    LEFT JOIN groups g ON c.group_id = g.id
+    LEFT JOIN phones p ON c.id = p.contact_id
+    GROUP BY c.id, c.name, c.email, c.birthday, g.name
+    ORDER BY c.id
+    LIMIT limit_value
+    OFFSET offset_value;
+END;
+$$ LANGUAGE plpgsql;
